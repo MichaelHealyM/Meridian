@@ -1,0 +1,33 @@
+:root {
+  --subtle-border-color: color-mix(in srgb, currentColor 22%, transparent);
+  --surface-background: var(--bs-tertiary-bg);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Faint engineering-drawing grid behind the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, currentColor 7%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.section-band {
+  border-block: 1px solid var(--bs-border-color);
+  background: var(--bs-tertiary-bg);
+}
+
+.badge-with-tooltip {
+  cursor: help;
+  font-family: var(--bs-font-monospace);
+}

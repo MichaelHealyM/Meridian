@@ -1,0 +1,39 @@
+---
+import { siteConfig } from '../config/site-config';
+import BaseLayout from '../layout/BaseLayout.astro';
+import { sitePath } from '../shared/site-urls';
+---
+
+<BaseLayout title={`Privacy | ${siteConfig.companyName}`} description="How we handle your data.">
+  <div class="container py-5" style="max-width: 46rem">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href={sitePath()}>Home</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Privacy
+        </li>
+      </ol>
+    </nav>
+    <h1 class="display-5">Privacy</h1>
+    <p class="text-secondary">
+      Placeholder text: have it reviewed for your jurisdiction before launch.
+    </p>
+    <h2 class="h4 mt-4">What we collect</h2>
+    <p>
+      Enquiry details you send through our contact form (name, email, company, message), used only
+      to reply to you. The form is processed by Formspree.
+    </p>
+    <h2 class="h4 mt-4">Visitor statistics</h2>
+    <p>
+      We count visits with a privacy-friendly analytics tool that does not use cookies or follow you
+      across sites.
+    </p>
+    <h2 class="h4 mt-4">Your choices</h2>
+    <p>
+      Email <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a> to see or
+      delete your enquiry data. The theme toggle stores one preference in your browser.
+    </p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import ContactButton from '../contact/ContactButton.astro';
+---
+
+<div
+  class="modal fade"
+  id="detail-modal"
+  tabindex="-1"
+  aria-labelledby="detail-modal-title"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h4" id="detail-modal-title"></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="detail-modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <ContactButton class="btn btn-primary" />
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  import './detail-modal.client';
+</script>

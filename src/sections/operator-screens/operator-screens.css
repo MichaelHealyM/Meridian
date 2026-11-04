@@ -1,0 +1,86 @@
+.before-after {
+  --divider-position: 50%;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--subtle-border-color);
+  border-radius: 0.5rem;
+}
+
+.before-after__layer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  padding: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.before-after__layer span {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.before-after__layer--before {
+  clip-path: inset(0 calc(100% - var(--divider-position)) 0 0);
+  background: #000;
+  color: #000;
+  font-weight: 700;
+}
+
+.before-after__layer--after {
+  background: var(--surface-background);
+}
+
+.before-after__layer--after span {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.before-after__layer--after .is-abnormal {
+  background: #d98a00;
+  color: #14212b;
+  font-weight: 700;
+}
+
+.before-after__control {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: ew-resize;
+  opacity: 0;
+}
+
+.before-after__divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--divider-position);
+  width: 4px;
+  margin-left: -2px;
+  background: #fff;
+  box-shadow: 0 0 0 1px #0006;
+  pointer-events: none;
+}
+
+.before-after__caption {
+  position: absolute;
+  top: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 0.25rem;
+  background: #14212bd9;
+  color: #fff;
+  font-size: 0.7rem;
+  pointer-events: none;
+}
+
+.before-after__caption--before {
+  left: 0.5rem;
+}
+
+.before-after__caption--after {
+  right: 0.5rem;
+}

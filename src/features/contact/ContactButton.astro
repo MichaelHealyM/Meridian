@@ -1,0 +1,19 @@
+---
+import { CONTACT_MODAL_ID } from './contact-modal-id';
+
+interface Props {
+  class?: string;
+  label?: string;
+}
+
+const { class: className, label = 'Contact us' } = Astro.props;
+---
+
+<button
+  type="button"
+  class={className}
+  data-bs-toggle="modal"
+  data-bs-target={`#${CONTACT_MODAL_ID}`}
+>
+  {label}
+</button>

@@ -1,0 +1,11 @@
+---
+import BrowserFrame from '../../../shared/components/BrowserFrame.astro';
+import PlcInputControls from '../plc/PlcInputControls.astro';
+---
+
+<PlcInputControls />
+<BrowserFrame address="plc-sim://agitator-m301.ld">
+  <div class="overflow-auto p-2">
+    <div data-ladder-diagram></div>
+  </div>
+</BrowserFrame>

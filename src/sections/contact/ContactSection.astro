@@ -1,0 +1,37 @@
+---
+import { siteConfig } from '../../config/site-config';
+import ContactButton from '../../features/contact/ContactButton.astro';
+import type { SectionProps } from '../../shared/types';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+const { email, phone, openingHours } = siteConfig.contact;
+---
+
+<section id={id} class="container py-5">
+  <div class="row g-4 align-items-center">
+    <div class="col-md-7">
+      <h2 class="display-6">Contact us</h2>
+      <p class="text-secondary">
+        Tell us what you’re automating. An engineer replies within one working day.
+      </p>
+      <ContactButton class="btn btn-primary btn-lg" />
+    </div>
+    <div class="col-md-5">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action" href={`mailto:${email}`}>
+          <small class="text-secondary d-block">Email</small>
+          {email}
+        </a>
+        <a class="list-group-item list-group-item-action" href={`tel:${phone.replace(/\s/g, '')}`}>
+          <small class="text-secondary d-block">Phone</small>
+          {phone}
+        </a>
+        <div class="list-group-item">
+          <small class="text-secondary d-block">Hours</small>
+          {openingHours}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

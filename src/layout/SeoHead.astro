@@ -1,0 +1,37 @@
+---
+import { siteConfig } from '../config/site-config';
+import { absoluteSiteUrl, sitePath } from '../shared/site-urls';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const socialImageUrl = absoluteSiteUrl('og.png', Astro.site);
+const organizationData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.companyName,
+  url: absoluteSiteUrl('', Astro.site),
+  email: siteConfig.contact.email,
+  telephone: siteConfig.contact.phone,
+  description: siteConfig.description,
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" type="image/svg+xml" href={sitePath('favicon.svg')} />
+<link rel="manifest" href={sitePath('site.webmanifest')} />
+<meta name="theme-color" content="#14212b" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteConfig.companyName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={socialImageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json" set:html={JSON.stringify(organizationData)} />

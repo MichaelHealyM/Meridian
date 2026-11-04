@@ -1,0 +1,36 @@
+---
+import type { SectionProps } from '../../shared/types';
+import { faqItems } from './content';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+---
+
+<section id={id} class="container py-5" style="max-width: 48rem">
+  <h2 class="display-6 mb-4">Questions we get asked</h2>
+  <div class="accordion accordion-flush" id="faq-accordion">
+    {faqItems.map(({ question, answer }, index) => (
+      <div class="accordion-item bg-transparent">
+        <h3 class="accordion-header">
+          <button
+            type="button"
+            class={`accordion-button bg-transparent shadow-none ${index === 0 ? '' : 'collapsed'}`}
+            data-bs-toggle="collapse"
+            data-bs-target={`#faq-answer-${index}`}
+            aria-expanded={index === 0 ? 'true' : 'false'}
+            aria-controls={`faq-answer-${index}`}
+          >
+            {question}
+          </button>
+        </h3>
+        <div
+          id={`faq-answer-${index}`}
+          class={`accordion-collapse collapse ${index === 0 ? 'show' : ''}`}
+          data-bs-parent="#faq-accordion"
+        >
+          <div class="accordion-body text-secondary">{answer}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

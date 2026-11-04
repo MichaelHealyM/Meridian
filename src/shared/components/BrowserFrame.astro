@@ -1,0 +1,19 @@
+---
+import './browser-frame.css';
+
+interface Props {
+  address: string;
+}
+
+const { address } = Astro.props;
+---
+
+<div class="browser-frame">
+  <div class="browser-frame__bar">
+    <span class="browser-frame__dot browser-frame__dot--close"></span>
+    <span class="browser-frame__dot browser-frame__dot--minimise"></span>
+    <span class="browser-frame__dot browser-frame__dot--expand"></span>
+    <span class="browser-frame__address">{address}</span>
+  </div>
+  <slot />
+</div>

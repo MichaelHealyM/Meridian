@@ -1,0 +1,26 @@
+---
+import { siteConfig } from '../config/site-config';
+import { sitePath } from '../shared/site-urls';
+
+const { companyName, description, contact } = siteConfig;
+---
+
+<footer class="text-light small" style="background: #14212b">
+  <div class="container py-4 d-flex flex-wrap justify-content-between gap-3">
+    <div>
+      <p class="h5 text-white mb-1">{companyName}</p>
+      <p class="mb-0">{description}</p>
+    </div>
+    <div class="text-md-end">
+      <a class="link-light d-block" href={`mailto:${contact.email}`}>
+        {contact.email}
+      </a>
+      <a class="link-light d-block" href={sitePath('privacy/')}>
+        Privacy
+      </a>
+      <span class="opacity-75">
+        © {new Date().getFullYear()} {companyName}. Placeholder company.
+      </span>
+    </div>
+  </div>
+</footer>

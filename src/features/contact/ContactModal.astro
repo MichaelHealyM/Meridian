@@ -1,0 +1,204 @@
+---
+import './contact-form.css';
+import { siteConfig } from '../../config/site-config';
+import { CONTACT_MODAL_ID } from './contact-modal-id';
+
+const topics = [
+  { value: 'upstream', label: 'Upstream (cell culture)' },
+  { value: 'downstream', label: 'Downstream (purification)' },
+  { value: 'fill-finish', label: 'Fill-finish' },
+  { value: 'validation', label: 'Validation or data integrity' },
+  { value: 'support', label: 'Validated support' },
+  { value: 'contract', label: 'A contract or NDA' },
+];
+---
+
+<div
+  class="modal fade"
+  id={CONTACT_MODAL_ID}
+  tabindex="-1"
+  aria-labelledby="contact-modal-title"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <form
+      id="contact-form"
+      class="modal-content"
+      action={`https://formspree.io/f/${siteConfig.contactFormId}`}
+      method="post"
+      novalidate
+    >
+      <div class="modal-header">
+        <h2 class="modal-title h4" id="contact-modal-title">
+          Contact us
+        </h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="small text-secondary">
+          An engineer replies within one working day. Choose “contract or NDA” and we’ll send
+          paperwork first.
+        </p>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="contact-name"
+                name="name"
+                placeholder="Name"
+                autocomplete="name"
+                required
+              />
+              <label for="contact-name">Name *</label>
+              <div class="form-error">Please enter your name.</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                required
+              />
+              <label for="contact-email">Work email *</label>
+              <div class="form-error">Please enter a valid email.</div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                id="contact-company"
+                name="company"
+                placeholder="Company"
+                autocomplete="organization"
+              />
+              <label for="contact-company">Company</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <select class="form-select" id="contact-topic" name="topic" required>
+                {topics.map(({ value, label }) => (
+                  <option value={value}>{label}</option>
+                ))}
+              </select>
+              <label for="contact-topic">Topic *</label>
+            </div>
+          </div>
+          <div id="contract-fields" class="col-12" style="display: none">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    class="form-control"
+                    id="contract-legal-entity"
+                    name="legal_entity"
+                    placeholder="Legal entity"
+                  />
+                  <label for="contract-legal-entity">Legal entity name *</label>
+                  <div class="form-error">Needed to prepare the contract.</div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    class="form-control"
+                    id="contract-start-date"
+                    name="start_date"
+                    type="date"
+                    placeholder="Start date"
+                  />
+                  <label for="contract-start-date">Preferred start date</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                id="contact-message"
+                name="message"
+                placeholder="Message"
+                style="height: 8rem"
+                required
+              ></textarea>
+              <label for="contact-message">Message *</label>
+              <div class="form-error">Please tell us a little about the project.</div>
+            </div>
+          </div>
+          <input
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            style="display: none"
+            aria-hidden="true"
+          />
+          <div class="col-12">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                id="contact-consent"
+                name="consent"
+                class="form-check-input"
+                required
+              />
+              <label for="contact-consent" class="form-check-label">
+                I agree to be contacted about this request. *
+              </label>
+              <div class="form-error">Please tick to continue.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p
+          id="contact-form-status"
+          class="form-status me-auto mb-0"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button class="btn btn-primary">
+          <span
+            id="contact-spinner"
+            class="spinner-border spinner-border-sm d-none me-2"
+            aria-hidden="true"
+          ></span>
+          Send message
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div
+    id="contact-sent-toast"
+    class="toast text-bg-success"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">Message sent. An engineer will reply within one working day.</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+</div>
+<script>
+  import './contact-form.client';
+</script>

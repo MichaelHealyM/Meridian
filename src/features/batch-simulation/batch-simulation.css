@@ -1,0 +1,144 @@
+.vessel-scene {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  margin: auto;
+}
+
+.vessel-pipe {
+  fill: none;
+  stroke: var(--subtle-border-color);
+  stroke-width: 5;
+}
+
+.vessel-flow {
+  fill: none;
+  opacity: 0;
+  stroke: #1c6fb8;
+  stroke-width: 3;
+  stroke-dasharray: 6 8;
+  animation: vessel-flow 0.5s linear infinite;
+}
+
+.vessel-flow.is-active {
+  opacity: 1;
+}
+
+.vessel-valve {
+  fill: var(--subtle-border-color);
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.vessel-valve.is-open {
+  fill: #1f9d6b;
+}
+
+.vessel-jacket {
+  fill: none;
+  stroke: var(--subtle-border-color);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.vessel-jacket.is-active {
+  stroke: #d98a00;
+  stroke-width: 3;
+  stroke-dasharray: none;
+  animation: vessel-jacket-glow 1s ease-in-out infinite;
+}
+
+.vessel-liquid {
+  fill: #1c6fb8;
+  opacity: 0.75;
+}
+
+.vessel-liquid.is-warm {
+  fill: #d98a00;
+}
+
+.vessel-impeller {
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transform-origin: 170px 210px;
+}
+
+.vessel-impeller.is-active {
+  animation: vessel-impeller-spin 0.7s ease-in-out infinite;
+}
+
+@keyframes vessel-flow {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+@keyframes vessel-jacket-glow {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes vessel-impeller-spin {
+  50% {
+    transform: scaleX(0.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vessel-flow,
+  .vessel-jacket.is-active,
+  .vessel-impeller.is-active {
+    animation: none;
+  }
+}
+
+.sequence-step {
+  width: 15rem;
+  max-width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--subtle-border-color);
+}
+
+.sequence-step--initial {
+  border: 4px double var(--subtle-border-color);
+}
+
+.sequence-step--active {
+  border-color: #1f9d6b;
+}
+
+.sequence-step__description {
+  display: block;
+  opacity: 0.7;
+}
+
+.sequence-step__progress {
+  height: 4px;
+  margin-top: 0.4rem;
+  background: var(--subtle-border-color);
+}
+
+.sequence-step__progress i {
+  display: block;
+  height: 100%;
+  background: #1f9d6b;
+}
+
+.sequence-transition {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  margin-left: 7rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid currentColor;
+  font: 0.75rem var(--bs-font-monospace);
+}
+
+.sequence-transition::before {
+  content: '';
+  width: 1rem;
+  margin-right: 0.25rem;
+  border-top: 4px solid currentColor;
+}

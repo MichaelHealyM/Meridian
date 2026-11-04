@@ -1,0 +1,38 @@
+.project-timeline {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 2px solid var(--subtle-border-color);
+  list-style: none;
+}
+
+.project-timeline li {
+  position: relative;
+}
+
+.project-timeline li::before {
+  content: '';
+  position: absolute;
+  top: 0.35rem;
+  left: -1.95rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #1c6fb8;
+}
+
+@media (min-width: 768px) {
+  .project-timeline {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 1.5rem 0 0;
+    border-top: 2px solid var(--subtle-border-color);
+    border-left: 0;
+  }
+
+  .project-timeline li::before {
+    top: -1.95rem;
+    left: 0;
+  }
+}

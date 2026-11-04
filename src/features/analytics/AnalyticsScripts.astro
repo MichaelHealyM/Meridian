@@ -1,0 +1,22 @@
+---
+import { siteConfig } from '../../config/site-config';
+
+const { goatCounterCode, cloudflareBeaconToken } = siteConfig.analytics;
+---
+
+{goatCounterCode && (
+  <script
+    is:inline
+    async
+    src="//gc.zgo.at/count.js"
+    data-goatcounter={`https://${goatCounterCode}.goatcounter.com/count`}
+  />
+)}
+{cloudflareBeaconToken && (
+  <script
+    is:inline
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon={JSON.stringify({ token: cloudflareBeaconToken })}
+  />
+)}

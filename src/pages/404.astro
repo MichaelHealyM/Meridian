@@ -1,0 +1,15 @@
+---
+import { siteConfig } from '../config/site-config';
+import BaseLayout from '../layout/BaseLayout.astro';
+import { sitePath } from '../shared/site-urls';
+---
+
+<BaseLayout title={`Page not found | ${siteConfig.companyName}`}>
+  <div class="container py-5 text-center" style="max-width: 40rem">
+    <p class="display-1 fw-bold">404</p>
+    <p class="lead text-secondary">That page isn’t here. It may have moved.</p>
+    <a class="btn btn-primary" href={sitePath()}>
+      Back to the home page
+    </a>
+  </div>
+</BaseLayout>

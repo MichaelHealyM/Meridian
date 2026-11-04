@@ -1,0 +1,26 @@
+---
+import './plc-demo.css';
+---
+
+<div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+  <button
+    type="button"
+    class="btn btn-success user-select-none"
+    style="touch-action: none"
+    data-plc-input="start"
+  >
+    Hold START (S)
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger user-select-none"
+    style="touch-action: none"
+    data-plc-input="stop"
+  >
+    Hold STOP (X)
+  </button>
+  <div class="d-flex flex-wrap gap-1" data-plc-state-badges></div>
+</div>
+<script>
+  import './plc-demo.client';
+</script>

@@ -1,0 +1,11 @@
+---
+import { pageSections } from '../config/page-sections';
+import { siteConfig } from '../config/site-config';
+import BaseLayout from '../layout/BaseLayout.astro';
+---
+
+<BaseLayout title={siteConfig.homePageTitle}>
+  {pageSections.map(({ id, component: Section }) => (
+    <Section id={id} />
+  ))}
+</BaseLayout>

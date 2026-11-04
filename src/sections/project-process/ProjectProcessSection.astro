@@ -1,0 +1,23 @@
+---
+import type { SectionProps } from '../../shared/types';
+import { projectStages } from './content';
+import './project-process.css';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+---
+
+<section id={id} class="section-band py-5">
+  <div class="container">
+    <h2 class="display-6">How a validated project runs</h2>
+    <ol class="project-timeline mt-5">
+      {projectStages.map(({ name, description }, index) => (
+        <li>
+          <span class="font-monospace small text-secondary">{index + 1}</span>
+          <h3 class="h5 mb-0">{name}</h3>
+          <p class="small text-secondary mb-0">{description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import { pageSections } from '../config/page-sections';
+import ContactButton from '../features/contact/ContactButton.astro';
+import ThemeToggleButton from '../features/theme/ThemeToggleButton.astro';
+import { sitePath } from '../shared/site-urls';
+
+const navigationItems = pageSections.flatMap(({ id, navigationLabel }) =>
+  navigationLabel ? [{ label: navigationLabel, href: sitePath(`#${id}`) }] : [],
+);
+---
+
+<nav id="main-navigation" class="navbar navbar-expand-md sticky-top border-bottom bg-body">
+  <div class="container">
+    <a class="navbar-brand fs-4" href={sitePath()}>
+      Meridian <span class="text-primary">Process Controls</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 order-md-last">
+      <ThemeToggleButton />
+      <ContactButton class="btn btn-primary btn-sm" />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#mobile-menu"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div
+      class="offcanvas-md offcanvas-end"
+      tabindex="-1"
+      id="mobile-menu"
+      aria-labelledby="mobile-menu-title"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobile-menu-title">
+          Menu
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          data-bs-target="#mobile-menu"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-md-4 gap-md-2">
+          {navigationItems.map(({ label, href }) => (
+            <li class="nav-item">
+              <a class="nav-link" href={href}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  import './site-header.client';
+</script>

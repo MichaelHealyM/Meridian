@@ -1,0 +1,33 @@
+.form-error {
+  display: none;
+  margin-top: 0.25rem;
+  color: #dc2626;
+  font-size: 0.875rem;
+}
+
+[aria-invalid='true'] {
+  border-color: #dc2626 !important;
+}
+
+[aria-invalid='true'] ~ .form-error {
+  display: block;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.form-status--success {
+  background: #dcfce7;
+  color: #14532d;
+}
+
+.form-status--failure {
+  background: #fee2e2;
+  color: #7f1d1d;
+}

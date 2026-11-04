@@ -1,0 +1,13 @@
+---
+import { THEME_STORAGE_KEY } from './theme-storage-key';
+---
+
+<!-- Runs before first paint so a saved dark theme never flashes light. New visitors get light. -->
+<script is:inline define:vars={{ storageKey: THEME_STORAGE_KEY }}>
+  try {
+    if (localStorage.getItem(storageKey) === 'dark')
+      document.documentElement.dataset.bsTheme = 'dark';
+  } catch {
+    // Storage can be blocked in private browsing; the light default is fine
+  }
+</script>

@@ -1,0 +1,71 @@
+---
+import DetailModalButton from '../../features/detail-modal/DetailModalButton.astro';
+import type { SectionProps } from '../../shared/types';
+import { projectCaseStudies } from './content';
+import './projects.css';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+---
+
+<section id={id} class="py-5 text-white" style="background: #14212b">
+  <div class="container">
+    <h2 class="display-6 mb-4">Selected projects</h2>
+    <div
+      id="projects-carousel"
+      class="carousel slide carousel-fade rounded overflow-hidden"
+      data-bs-ride="carousel"
+      aria-label="Selected projects"
+    >
+      <div class="carousel-indicators">
+        {projectCaseStudies.map(({ title }, index) => (
+          <button
+            type="button"
+            data-bs-target="#projects-carousel"
+            data-bs-slide-to={index}
+            class={index === 0 ? 'active' : ''}
+            aria-label={title}
+          />
+        ))}
+      </div>
+      <div class="carousel-inner">
+        {projectCaseStudies.map(
+          ({ title, headlineMetric, metricLabel, summary, backgroundColor }, index) => (
+            <div class={`carousel-item ${index === 0 ? 'active' : ''}`}>
+              <div class="project-slide" style={`background: ${backgroundColor}`}>
+                <p class="display-3 fw-bold mb-0">{headlineMetric}</p>
+                <p class="text-white-50">{metricLabel}</p>
+                <h3 class="h4 mt-4">{title}</h3>
+                <p class="text-white-50 col-md-8">{summary}</p>
+                <DetailModalButton
+                  class="btn btn-outline-light btn-sm"
+                  label="Case study"
+                  title={title}
+                  body={summary}
+                />
+              </div>
+            </div>
+          ),
+        )}
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#projects-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#projects-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>

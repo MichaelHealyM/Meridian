@@ -1,0 +1,56 @@
+---
+import type { SectionProps } from '../../shared/types';
+import BatchSequenceTab from './tabs/BatchSequenceTab.astro';
+import Isa88Tab from './tabs/Isa88Tab.astro';
+import LadderTab from './tabs/LadderTab.astro';
+import StatementListTab from './tabs/StatementListTab.astro';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+
+/** Each tab is a self-contained block: delete its file and its entry here to remove it. */
+const tabs = [
+  { slug: 'ladder', label: 'Ladder', component: LadderTab },
+  { slug: 'statement-list', label: 'Statement List', component: StatementListTab },
+  { slug: 'batch-sequence', label: 'SFC batch', component: BatchSequenceTab },
+  { slug: 'isa-88', label: 'ISA-88 model', component: Isa88Tab },
+];
+---
+
+<section id={id} class="section-band py-5">
+  <div class="container">
+    <h2 class="display-6">Try the logic</h2>
+    <p class="text-secondary col-md-8">
+      Run PLC logic and an animated batch sequence. Works with touch or keyboard.
+    </p>
+    <noscript>
+      <div class="alert alert-warning">Enable JavaScript to run the live demos.</div>
+    </noscript>
+    <ul class="nav nav-tabs flex-nowrap overflow-x-auto overflow-y-hidden mt-4" role="tablist">
+      {tabs.map(({ slug, label }, index) => (
+        <li class="nav-item" role="presentation">
+          <button
+            type="button"
+            class={`nav-link text-nowrap ${index === 0 ? 'active' : ''}`}
+            data-bs-toggle="tab"
+            data-bs-target={`#live-demo-${slug}`}
+            role="tab"
+          >
+            {label}
+          </button>
+        </li>
+      ))}
+    </ul>
+    <div class="tab-content mt-3">
+      {tabs.map(({ slug, component: Tab }, index) => (
+        <div
+          class={`tab-pane fade ${index === 0 ? 'show active' : ''}`}
+          id={`live-demo-${slug}`}
+          role="tabpanel"
+        >
+          <Tab />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

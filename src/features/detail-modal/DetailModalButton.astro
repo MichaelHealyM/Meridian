@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  label: string;
+  class?: string;
+}
+
+const { title, body, label, class: className } = Astro.props;
+---
+
+<button
+  type="button"
+  class={className}
+  data-bs-toggle="modal"
+  data-bs-target="#detail-modal"
+  data-detail-title={title}
+  data-detail-body={body}
+>
+  {label}
+</button>

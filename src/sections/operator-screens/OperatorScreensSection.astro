@@ -1,0 +1,43 @@
+---
+import type { SectionProps } from '../../shared/types';
+import { bioreactorScreenTags } from './content';
+import './operator-screens.css';
+
+type Props = SectionProps;
+const { id } = Astro.props;
+---
+
+<section id={id} class="container py-5">
+  <h2 class="display-6">Operator screens built for review by exception</h2>
+  <p class="text-secondary col-md-8">
+    Drag the handle. <strong>Left:</strong> every state has a colour, so the real fault (low
+    dissolved oxygen) hides. <strong>Right:</strong> grey when normal, colour only when an operator
+    must act (ISA-101 style).
+  </p>
+  <div class="before-after mt-4">
+    <div class="before-after__layer before-after__layer--before">
+      {bioreactorScreenTags.map(({ label, legacyColor }) => (
+        <span style={`background: ${legacyColor}`}>{label}</span>
+      ))}
+    </div>
+    <div class="before-after__layer before-after__layer--after">
+      {bioreactorScreenTags.map(({ label, isAbnormal, abnormalLabel }) => (
+        <span class={isAbnormal ? 'is-abnormal' : ''}>{isAbnormal ? abnormalLabel : label}</span>
+      ))}
+    </div>
+    <span class="before-after__divider"></span>
+    <span class="before-after__caption before-after__caption--before">Legacy HMI</span>
+    <span class="before-after__caption before-after__caption--after">High-performance HMI</span>
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      class="before-after__control"
+      aria-label="Compare a cluttered legacy screen with a calm high-performance screen"
+    />
+  </div>
+</section>
+<script>
+  import './before-after-slider.client';
+</script>

@@ -1,0 +1,32 @@
+// Brand tokens as Bootstrap Sass variables: change these to rebrand the site.
+$primary: #1c6fb8;
+$success: #1f9d6b;
+$warning: #d98a00;
+$info: #1c8fb8;
+$danger: #c0392b;
+$dark: #14212b;
+$body-bg: #e6eaed;
+$body-color: #14212b;
+$body-bg-dark: #0e1820;
+$body-color-dark: #e6eaed;
+$body-tertiary-bg: #f6f8f9;
+$body-tertiary-bg-dark: #14212b;
+$border-color: #b7c2ca;
+$border-color-dark: #2b3d4d;
+$font-family-sans-serif:
+  'IBM Plex Sans',
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  sans-serif;
+$font-family-monospace: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+$headings-font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+$headings-font-weight: 700;
+$enable-shadows: false;
+
+@import 'bootstrap/scss/bootstrap';
+
+.navbar-brand {
+  font-family: $headings-font-family;
+  font-weight: 700;
+}

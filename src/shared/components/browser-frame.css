@@ -1,0 +1,41 @@
+.browser-frame {
+  overflow: hidden;
+  border: 1px solid var(--subtle-border-color);
+  border-radius: 0.5rem;
+  background: var(--surface-background);
+}
+
+.browser-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--subtle-border-color);
+}
+
+.browser-frame__dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.browser-frame__dot--close {
+  background: #f87171;
+}
+
+.browser-frame__dot--minimise {
+  background: #facc15;
+}
+
+.browser-frame__dot--expand {
+  background: #4ade80;
+}
+
+.browser-frame__address {
+  margin-left: 0.75rem;
+  overflow: hidden;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

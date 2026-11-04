@@ -1,0 +1,18 @@
+---
+import BatchSequencePanel from '../../../features/batch-simulation/BatchSequencePanel.astro';
+import BatchVessel from '../../../features/batch-simulation/BatchVessel.astro';
+import BrowserFrame from '../../../shared/components/BrowserFrame.astro';
+---
+
+<div class="row g-4">
+  <div class="col-md-6">
+    <BatchSequencePanel />
+  </div>
+  <div class="col-md-6">
+    <BrowserFrame address="scada.meridian.example/MP-101">
+      <div class="p-3">
+        <BatchVessel />
+      </div>
+    </BrowserFrame>
+  </div>
+</div>
