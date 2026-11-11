@@ -23,7 +23,7 @@
     "@popperjs/core": "^2.11.8",
     "astro": "^7.4.4",
     "bootstrap": "^5.3.8",
-    "sass": "^1.107.1"
+    "sass": "^1.108.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
